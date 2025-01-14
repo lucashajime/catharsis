@@ -1,8 +1,6 @@
 # roubank-css 
-### **Autor:** Roni Fabio Banaszewski
-Este projeto tem como objetivo implementar progressivamente e de forma didática uma aplicação web inspirada em operações comuns de instituições financeiras (ex: saque, depósito, extrato, saldo, cadastro), sendo o diferencial, a cobrança de taxas de forma abusiva para cada operação realizada pelo cliente.
-
-O frontend da aplicação foi desenvolvido com HTML, CSS e JavaScript e o backend foi simulado pela implementação de uma API Fake, usando o JSON Server.
+### **Autor:** Lucas Hajime Oshiro Takatuzi
+Este projeto tem como objetivo implementar um site de carrossel de imagens com uma narrativa descrita.
 
 ## Design das Telas - Figma: 
 https://www.figma.com/file/a1VDbO1aNfZyulQPxT99OE/beleza-em-dia?node-id=3%3A80
@@ -11,7 +9,7 @@ https://www.figma.com/file/a1VDbO1aNfZyulQPxT99OE/beleza-em-dia?node-id=3%3A80
 Link para o PDF
 
 ## Site em Produção - GitHub Pages
-https://utfpr-gp.github.io/roubank-css/
+https://github.com/lucashajime/catharsis
 
 ## Framework CSS
 **MaterializeCSS**
