@@ -1,0 +1,103 @@
+<!--
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Metadados básicos --
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Discover original content from the CATHARSIS community.">
+  <title>Feed | CATHARSIS</title>
+
+  <!-- Favicon e ícones --
+  <link rel="shortcut icon" href="//assets.vsco.co/assets/images/favicon.ico">
+  <link rel="apple-touch-icon" href="//assets.vsco.co/assets/images/favicon-152.png">
+
+  <!-- Estilos --
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+  <!-- Conteúdo principal --
+  <header>
+    <h1>Welcome to CATHARSIS</h1>
+    <p>Discover original content from the CATHARSIS community.</p>
+  </header>
+  
+  <main>
+    <section>
+      <p>Explore amazing visuals and connect with creators worldwide.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 CATHARSIS. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts essenciais --
+  <script>
+    console.log("Welcome to the simplified CATHARSIS page!");
+  </script>
+
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Responsivo</title>
+
+    <!-- Incluindo Bootstrap -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        .text-bg-info { color: white; background-color: #0dcaf0; }
+        .text-bg-danger { color: white; background-color: #dc3545; }
+        .text-bg-warning { color: black; background-color: #ffc107; }
+        .text-bg-secondary { color: white; background-color: #6c757d; }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <!-- Primeira Linha: Três Colunas com Largura Automática -->
+        <div class="row mb-4">
+            <div class="col text-bg-info text-center py-3">Primeira Coluna</div>
+            <div class="col text-bg-danger text-center py-3">Segunda Coluna</div>
+            <div class="col d-none d-md-block text-bg-warning text-center py-3">
+                Terceira Coluna (Oculta em XS e SM)
+            </div>
+        </div>
+
+        <!-- Segunda Linha: Coluna Única -->
+        <div class="row mb-4">
+            <div class="col-12 text-bg-secondary text-center py-3">
+                Coluna Única da Segunda Linha
+            </div>
+        </div>
+
+        <!-- Terceira Linha: Tamanhos Fixos, Offset e Order -->
+        <div class="row">
+            <!-- Coluna com offset -->
+            <div class="col-md-4 offset-md-2 text-bg-info text-center py-3">
+                Coluna com Offset
+            </div>
+            <!-- Coluna com ordem personalizada -->
+            <div class="col-md-4 order-md-3 text-bg-danger text-center py-3">
+                Coluna com Ordem 3
+            </div>
+            <!-- Coluna padrão -->
+            <div class="col-md-4 order-md-1 text-bg-warning text-center py-3">
+                Coluna com Ordem 1
+            </div>
+        </div>
+    </div>
+
+    <!-- Incluindo Scripts Bootstrap -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
