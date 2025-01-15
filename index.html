@@ -1,25 +1,24 @@
-<!--
-
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <!-- Metadados básicos --
+  <!-- Metadados básicos -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Discover original content from the CATHARSIS community.">
   <title>Feed | CATHARSIS</title>
 
-  <!-- Favicon e ícones --
+  <!-- Favicon e ícones -->
   <link rel="shortcut icon" href="//assets.vsco.co/assets/images/favicon.ico">
   <link rel="apple-touch-icon" href="//assets.vsco.co/assets/images/favicon-152.png">
 
-  <!-- Estilos --
+  <!-- Estilos -->
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="styles.css">
 
 </head>
 <body>
-  <!-- Conteúdo principal --
+  <!-- Conteúdo principal -->
   <header>
     <h1>Welcome to CATHARSIS</h1>
     <p>Discover original content from the CATHARSIS community.</p>
@@ -29,75 +28,99 @@
     <section>
       <p>Explore amazing visuals and connect with creators worldwide.</p>
     </section>
+    <div class="container my-5">
+      <!-- Primeira Linha: Três Colunas com Largura Automática -->
+      <div class="row mb-4">
+        <div class="col text-bg-info text-center py-3">First Column
+          <!-- Botão para abrir o modal -->
+           <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Modal
+           </button>
+        </div>   
+        <div class="col text-bg-danger text-center py-3">Second Column
+          <div class="col-12 text-bg-secondary">
+            <i class="bi bi-diamond-half"></i>
+            <i class="bi bi-virus"></i>
+            <i class="bi bi-unity"></i>
+          </div>
+        </div>
+        <div class="col d-none d-md-block text-bg-warning text-center py-3">Third Column (invisible for XS and SM)
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-success">Success</button>
+            <button class="btn btn-danger">Danger</button>
+            <button class="btn btn-warning">Warning</button>
+            <button class="btn btn-info">Info</button>
+            <button class="btn btn-dark">Delete</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Segunda Linha: Coluna Única -->
+      <div class="row">
+        <div class="col-12 text-bg-secondary">Lone Column of the Second Row
+          <div class="col">
+          <div class="card custom-card">
+              <img src="https://cdn-yc-static.i-m-i.ru/store/uploads/profile/1202/photo/main-815b8c262676f897ad61569e6e17cd79.jpg" class="card-img-top img-fluid" alt="Imagem">
+              <div class="card-body">
+                  <h5 class="card-title text-uppercase text fw-bold fs-1">CATHARSIS CARD</h5>
+                  <p class="card-text">Welcome to CATHARSIS WEBSITE, where you can make your soul speak!</p>
+              </div>
+            </div>  
+          </div>
+        </div>
+      </div>
+
+      <!-- Terceira Linha: Tamanhos Fixos, Offset e Order -->
+      <div class="row">
+        <!-- Coluna com offset -->
+        <div class="col-md-4 offset-md-2 text-bg-info text-center py-3">
+          Offset
+        </div>
+        <!-- Coluna com ordem personalizada -->
+        <div class="col-md-4 order-md-3 text-bg-danger text-center py-3">
+          Ordem 3
+        </div>
+        <!-- Coluna padrão -->
+        <div class="col-md-4 order-md-1 text-bg-warning text-center py-3">
+          Ordem 1
+        </div>
+      </div>
+    </div>
   </main>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal Name</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Proin vehicula ipsum sit amet ex mollis, vulputate suscipit magna auctor. Nunc cursus eros vel commodo hendrerit. 
+            Mauris ac pulvinar nisl. Mauris ac varius tellus, ac varius urna. Aliquam eu sem felis. Proin imperdiet condimentum finibus. 
+            Fusce convallis ex egestas, feugiat eros convallis, efficitur mi. Nam ac dolor in sem tincidunt gravida. 
+            In nisl eros, posuere ac nibh at, porta tincidunt risus. Duis felis dolor, efficitur tincidunt pulvinar eu, hendrerit sit amet diam. 
+            Curabitur placerat quis odio eu convallis. </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <p>&copy; 2025 CATHARSIS. All rights reserved.</p>
   </footer>
 
-  <!-- Scripts essenciais --
+  <!-- Scripts essenciais -->
   <script>
     console.log("Welcome to the simplified CATHARSIS page!");
   </script>
 
   <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-</body>
-</html>
--->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Layout Responsivo</title>
-
-    <!-- Incluindo Bootstrap -->
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <style>
-        .text-bg-info { color: white; background-color: #0dcaf0; }
-        .text-bg-danger { color: white; background-color: #dc3545; }
-        .text-bg-warning { color: black; background-color: #ffc107; }
-        .text-bg-secondary { color: white; background-color: #6c757d; }
-    </style>
-</head>
-<body>
-    <div class="container my-5">
-        <!-- Primeira Linha: Três Colunas com Largura Automática -->
-        <div class="row mb-4">
-            <div class="col text-bg-info text-center py-3">Primeira Coluna</div>
-            <div class="col text-bg-danger text-center py-3">Segunda Coluna</div>
-            <div class="col d-none d-md-block text-bg-warning text-center py-3">
-                Terceira Coluna (Oculta em XS e SM)
-            </div>
-        </div>
-
-        <!-- Segunda Linha: Coluna Única -->
-        <div class="row mb-4">
-            <div class="col-12 text-bg-secondary text-center py-3">
-                Coluna Única da Segunda Linha
-            </div>
-        </div>
-
-        <!-- Terceira Linha: Tamanhos Fixos, Offset e Order -->
-        <div class="row">
-            <!-- Coluna com offset -->
-            <div class="col-md-4 offset-md-2 text-bg-info text-center py-3">
-                Coluna com Offset
-            </div>
-            <!-- Coluna com ordem personalizada -->
-            <div class="col-md-4 order-md-3 text-bg-danger text-center py-3">
-                Coluna com Ordem 3
-            </div>
-            <!-- Coluna padrão -->
-            <div class="col-md-4 order-md-1 text-bg-warning text-center py-3">
-                Coluna com Ordem 1
-            </div>
-        </div>
-    </div>
-
-    <!-- Incluindo Scripts Bootstrap -->
-    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
