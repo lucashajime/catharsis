@@ -1,4 +1,4 @@
-# roubank-css 
+# CATHARSIS-APP
 ### **Autor:** Lucas Hajime Oshiro Takatuzi
 Este projeto tem como objetivo implementar um site de carrossel de imagens com uma narrativa descrita.
 
