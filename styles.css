@@ -20,12 +20,12 @@
   }
   
   body {
+    margin: 0;
     font-family: 'Helvetica Neue', Arial, sans-serif;
     font-size: 16px;
     line-height: 1.6;
     color: #333;
     background-color: #f9f9f9;
-    margin: 0;
   }
   
   /* Cabeçalho */
@@ -54,6 +54,7 @@
     padding: 20px;
     max-width: 900px;
     margin: 0 auto;
+    flex: 1;
   }
   
   main section {
@@ -69,9 +70,75 @@
     font-size: 1.125rem;
     color: #555;
   }
+
+  /* Estilo do Sidenav */
+.sidenav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px; /* Largura do painel lateral */
+  height: 100%;
+  background-color: #000; /* Cor de fundo igual ao footer */
+  color: #fff; /* Texto claro */
+  display: flex;
+  flex-direction: column;
+  padding: 20px 10px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease; /* Transição suave para mostrar/ocultar */
+  z-index: 1000;
+}
+
+/* Estilos para os botões do sidenav */
+.sidenav a {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+.sidenav a:hover {
+  color: #c9c9c9; /* Cor do texto ao passar o mouse */
+  text-decoration: underline;
+}
+
+/* Tamanho e estilo dos ícones de navegação */
+.sidenav i {
+  margin-right: 10px;
+}
+
+/* Estilos para o botão de fechar (se houver) */
+.sidenav .closebtn {
+  font-size: 30px;
+  color: #fff;
+  text-decoration: none;
+  position: absolute;
+  top: 20px;
+  right: 25px;
+}
+
+/* Estilos responsivos: quando a tela for pequena */
+@media screen and (max-width: 768px) {
+  .sidenav {
+    width: 100%; /* O painel lateral ocupa toda a tela em dispositivos móveis */
+    height: 100%;
+    padding: 10px;
+  }
+
+  .sidenav a {
+    font-size: 1.5rem; /* Aumenta o tamanho da fonte em dispositivos móveis */
+  }
+
+  .sidenav .closebtn {
+    font-size: 40px; /* Aumenta o tamanho do botão de fechar */
+  }
+}
+
   
   /* Rodapé */
   footer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     background-color: #000;
     color: #fff;
     text-align: center;
