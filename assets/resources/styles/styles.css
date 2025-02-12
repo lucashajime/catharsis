@@ -1,5 +1,20 @@
 /* CSS Básico a ser alterado */
 
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-content {
+    flex: 1;
+  }
+
   :root {
     --bs-primary: #c9c9c9; /* Nova cor para o tema primário */
     --bs-primary-rgb: 255, 87, 51; /* Cor primária no formato RGB */
@@ -20,7 +35,6 @@
   }
   
   body {
-    margin: 0;
     font-family: 'Helvetica Neue', Arial, sans-serif;
     font-size: 16px;
     line-height: 1.6;
@@ -28,7 +42,7 @@
     background-color: #f9f9f9;
   }
   
-  /* Cabeçalho */
+  /* Header */
   header {
     background-color: #ffffff;
     color: #000;
@@ -64,6 +78,7 @@
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    flex: 1;
   }
   
   main p {
@@ -71,70 +86,89 @@
     color: #555;
   }
 
+  /* Estilo do Formulário */
+  #cadastro {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
   /* Estilo do Sidenav */
-.sidenav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 250px; /* Largura do painel lateral */
-  height: 100%;
-  background-color: #000; /* Cor de fundo igual ao footer */
-  color: #fff; /* Texto claro */
-  display: flex;
-  flex-direction: column;
-  padding: 20px 10px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease; /* Transição suave para mostrar/ocultar */
-  z-index: 1000;
-}
-
-/* Estilos para os botões do sidenav */
-.sidenav a {
-  color: #fff;
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  text-decoration: none;
-}
-
-.sidenav a:hover {
-  color: #c9c9c9; /* Cor do texto ao passar o mouse */
-  text-decoration: underline;
-}
-
-/* Tamanho e estilo dos ícones de navegação */
-.sidenav i {
-  margin-right: 10px;
-}
-
-/* Estilos para o botão de fechar (se houver) */
-.sidenav .closebtn {
-  font-size: 30px;
-  color: #fff;
-  text-decoration: none;
-  position: absolute;
-  top: 20px;
-  right: 25px;
-}
-
-/* Estilos responsivos: quando a tela for pequena */
-@media screen and (max-width: 768px) {
   .sidenav {
-    width: 100%; /* O painel lateral ocupa toda a tela em dispositivos móveis */
-    height: 100%;
-    padding: 10px;
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #343a40;
+    color: white;
+    padding-top: 20px;
+    transition: transform 0.3s ease-in-out;
   }
 
-  .sidenav a {
-    font-size: 1.5rem; /* Aumenta o tamanho da fonte em dispositivos móveis */
+  /* Sidenav aparece somente em telas maiores */
+  @media (min-width: 769px) {
+    .sidenav {
+      transform: translateX(0);
+    }
   }
 
-  .sidenav .closebtn {
-    font-size: 40px; /* Aumenta o tamanho do botão de fechar */
+  /* Sidenav aparece invisível em uma tela mobile */
+  @media (max-width: 768px) {
+    .sidenav {
+      transform: translateX(-100%);
+      width: 200px;
+    }
   }
-}
 
+
+  .sidenav.show {
+      transform: translateX(0);
+  }
+  .sidenav .nav-link {
+      color: white;
+  }
+  .sidenav .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Header para mobile */
+  .mobile-header {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #343a40;
+      color: white;
+      padding: 10px;
+      z-index: 1000;
+  }
+
+  .mobile-header span {
+    flex-grow: 1;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* Estilos para quando a tela for menor */
+  @media (max-width: 768px) {
+      .mobile-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+  }
+
+  .menu-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+  }
   
-  /* Rodapé */
+  /* Footer */
   footer {
     height: 100%;
     display: flex;
@@ -172,7 +206,7 @@
     }
   }
 
-    /* Personalizando as colunas para melhor visibilidade */
+  /* Personalizando as colunas para melhor visibilidade */
   .text-bg-info {
     color: white;
     background-color: #0dcaf0;
@@ -193,7 +227,7 @@
     background-color: #6c757d;
   }
 
-  /* Centralização de texto e espaçamento adicional */
+  /* Centralização de texto e espaçamento */
   .text-center {
     text-align: center;
   }
@@ -203,7 +237,7 @@
     padding-bottom: 1rem;
   }
 
-    /* Personalização do botão */
+  /* Personalização do botão */
   .btn-primary {
     background-color: #007bff;
     border-color: #0056b3;
@@ -228,6 +262,24 @@
   .modal-footer {
     background-color: #f8f9fa;
     border-top: 1px solid #dee2e6;
+  }
+
+  /*Validação dos campos destacando os válidos e inválidos*/
+  input:invalid {
+    border-color: red;
+  }
+  input:valid {
+    border-color: red;
+  } 
+
+  .error-message {
+    color: red;
+    font-size: 0.875em;
+    display: none;
+  }
+
+  input:invalid + .error-message {
+    display: block;
   }
 
   
