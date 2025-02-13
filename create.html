@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Discover original content from the CATHARSIS community.">
-    <title>ACCOUNT | CATHARSIS</title>
+    <title>CREATE | CATHARSIS</title>
     
     <link rel="shortcut icon" href="//assets.vsco.co/assets/images/favicon.ico">
     <link rel="apple-touch-icon" href="//assets.vsco.co/assets/images/favicon-152.png">
@@ -32,15 +32,20 @@
     <div class="main-content">
         <header>
             <h1>CATHARSIS</h1>
-            <p>Tell us your story.</p>
+            <p>Share inspiring content.</p>
         </header>
 
-        <section id="info" class="container my-5">
-            <div class="my-3">
-                <h2>ACCOUNT INFO</h2>
-                <div id="usuarioDados" class="alert alert-info"></div>
-            </div>
-        </section>
+        <div class="container my-5">
+            <h2>Upload Your Image</h2>
+            <form id="imageUploadForm">
+                <div class="mb-3">
+                    <label for="imageInput" class="form-label">Select an image:</label>
+                    <input type="file" class="form-control" id="imageInput" accept="image/*">
+                </div>
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </form>
+            <div id="imagePreview" class="mt-4"></div>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -48,23 +53,26 @@
         <p>&copy; 2025 CATHARSIS. All rights reserved.</p>
     </footer>
 
-    <!-- Script externo -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const usuarioDados = document.getElementById("usuarioDados");
-
-            // Recupera o usuário do localStorage
-            const usuario = JSON.parse(localStorage.getItem("usuario"));
-
-            if (!usuario) {
-                usuarioDados.textContent = "Nenhum usuário cadastrado.";
-                usuarioDados.classList.replace("alert-info", "alert-warning");
-            } else {
-                usuarioDados.innerHTML = `<strong>Nome:</strong> ${usuario.nome} <br>
-                                          <strong>Email:</strong> ${usuario.email}`;
-            }
-        })
-    </script>
     <script src="assets/resources/scripts/index.js"></script>
+    <script>
+        document.getElementById("imageUploadForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const fileInput = document.getElementById("imageInput");
+            const imagePreview = document.getElementById("imagePreview");
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+                    imagePreview.innerHTML = `<img src="${event.target.result}" class="img-fluid mt-3" alt="Uploaded Image" style="max-width: 100%; height: auto;">`;
+                };
+                
+                reader.readAsDataURL(file);
+            } else {
+                alert("Selecione uma imagem.");
+            }
+        });
+    </script>
 </body>
 </html>

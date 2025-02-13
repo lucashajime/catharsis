@@ -1,21 +1,78 @@
 "use strict";
 
-// Navegação entre FEED, SEARCH e ACCOUNT
-document.getElementById("feedLink").addEventListener("click", function() {
-    window.location.href = "#feed";
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("cadastroForm");
+    const clearBtn = document.getElementById("clearBtn");
+    
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const nome = document.getElementById("nome");
+        const email = document.getElementById("email");
+        const senha = document.getElementById("senha");
+
+        if (nome.checkValidity() && email.checkValidity() && senha.checkValidity()) {
+            // Somente armazenando no localStorage se os campos estiverem corretos
+            const userData = {
+                nome: nome.value,
+                email: email.value,
+                senha: senha.value
+            };
+            localStorage.setItem("usuario", JSON.stringify(userData));
+
+            window.location.href = "index.html";
+        } else {
+            alert("Preencha todos os campos corretamente");
+        }
+    });
+
+    // Evento apra limpar o formulário
+    clearBtn.addEventListener("click", function () {
+        form.requestFullscreen();
+    });
+
+    // Navegação entre FEED, CREATE e ACCOUNT
+    const usuarioLogado = localStorage.getItem("usuario");
+
+    if (usuarioLogado) {
+        document.getElementById("feedLink").addEventListener("click", function () {
+            window.location.href = "index.html"
+        });
+
+        document.getElementById("createLink").addEventListener("click", function () {
+            window.location.href = "create.html"
+        });
+
+        document.getElementById("accountLink").addEventListener("click", function () {
+            window.location.href = "account.html"
+        });
+    } else {
+        document.getElementById("sidenav").querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                alert("Você precisa fazer login para acessar esta página");
+            });
+        });
+    }
 });
 
-document.getElementById("searchLink").addEventListener("click", function() {
-    window.location.href = "#search";
-});
-
-document;getElementById("accountLink").addEventListener("click", function() {
-    alert("Dados do Formulário de Conta serão adicionados em breve");
-});
 
 // Sidenav no mobile
 function toggleSidenav() {
     document.getElementById("sidenav").classList.toggle("show");
+}
+
+// Função para abrir e fechar o sidenav corretamente
+function toggleSidenav() {
+    const sidenav = document.getElementById("sidenav");
+    const headerHeight = document.querySelector(".mobile-header").offsetHeight;
+
+    if (sidenav.classList.contains("show")) {
+        sidenav.classList.remove("show");
+    } else {
+        sidenav.style.top = `${headerHeight}px`;
+        sidenav.classList.add("show");
+    }
 }
 
 // Classe para armazenar os dados capturados
@@ -47,11 +104,18 @@ document.getElementById("cadastroForm").addEventListener("submit", function(even
 
 });
 
-// Evento para limpar os campos do formulário
-document.getElementById("clearBtn").addEventListener("click", function() {
-    const inputs = document.querySelectorAll(".input-cadastro");
-    inputs.forEach(function(input) {
-        input.value = "";
+//Evento largura mobile
+document.addEventListener("DOMContentLoaded", function () {
+    let modals = document.querySelectorAll(".modal");
+
+    modals.forEach(modal => {
+        modal.addEventListener("shown.bs.modal", function () {
+            document.body.classList.add("modal-open");
+        });
+
+        modal.addEventListener("hidden.bs.modal", function () {
+            document.body.classList.remove("modal-open");
+        });
     });
 });
 
