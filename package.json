@@ -9,6 +9,8 @@
   "description": "Plataforma de publicação de fotos com o adicional de uma breve história por trás das imagens.",
   "main": "index.js",
   "scripts": {
+    "start": "json-server --watch db.json --port 3000",
+    "dev": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -16,6 +18,7 @@
   "license": "ISC",
   "devDependencies": {
     "abc": "^0.6.1",
-    "gh-pages": "^6.3.0"
+    "gh-pages": "^6.3.0",
+    "json-server": "^1.0.0-beta.3"
   }
 }
