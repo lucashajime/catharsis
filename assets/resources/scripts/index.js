@@ -1,68 +1,85 @@
 "use strict";
 
+// Manipulação DOM e sintaxe de classes do ES6 - Referemte à atividade 16"
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("cadastroForm");
     const clearBtn = document.getElementById("clearBtn");
+    const sidenav = document.getElementById("sidenav");
+    const usuarioLogado = getUsuarioLogado();
+
+    form.addEventListener("submit", handleFormSubmit);
+    clearBtn.addEventListener("click", () => form.reset());
+
+    configurarNavegacao(usuarioLogado);
+    configurarModais();
+});
+
+// Captura o usuário logado do localStorage em JavaScript - Referente à atividade 18
+function getUsuarioLogado() {
+    try {
+        const usuario = JSON.parse(localStorage.getItem("usuario"));
+        return usuario && usuario.email ? usuario : null;
+    } catch (error) {
+        console.error("Erro ao recuperar usuário do localStorage", error);
+        return null;
+    }
+}
+
+// Função para lidar com o envio do formulário - Referente a atividade 17
+function handleFormSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+
+    if (!form.checkValidity()) {
+        alert("Preencha todos os campos corretamente");
+        return;
+    }
+
+    const usuario = new Usuario(
+        document.getElementById("nome").value,
+        document.getElementById("email").value,
+        document.getElementById("senha").value
+    );
     
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
+    salvarUsuario(usuario);
+    window.location.href = "index.html";
+}
 
-        const nome = document.getElementById("nome");
-        const email = document.getElementById("email");
-        const senha = document.getElementById("senha");
+// Classe para armazenar os dados capturados - Referente a atividade 18
+class Usuario {
+    constructor(nome, email, senha) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+    }
+}
 
-        if (nome.checkValidity() && email.checkValidity() && senha.checkValidity()) {
-            // Somente armazenando no localStorage se os campos estiverem corretos
-            const userData = {
-                nome: nome.value,
-                email: email.value,
-                senha: senha.value
-            };
-            localStorage.setItem("usuario", JSON.stringify(userData));
+// Salva o usuário no localStorage - Referente a atividade 18
+function salvarUsuario(usuario) {
+    try {
+        localStorage.setItem("usuario", JSON.stringify(usuario)); 
+    } catch (error) {
+        console.error("Erro ao salvar usuário no localStorage", error);
+    }
+}
 
-            window.location.href = "index.html";
-        } else {
-            alert("Preencha todos os campos corretamente");
-        }
-    });
-
-    // Evento apra limpar o formulário
-    clearBtn.addEventListener("click", function () {
-        form.requestFullscreen();
-    });
-
-    // Navegação entre FEED, CREATE e ACCOUNT
-    const usuarioLogado = localStorage.getItem("usuario");
-
+// Navegação condicional, somente disponível quando o usuário está logado.
+function configurarNavegacao(usuarioLogado) {
     if (usuarioLogado) {
-        document.getElementById("feedLink").addEventListener("click", function () {
-            window.location.href = "index.html"
-        });
-
-        document.getElementById("createLink").addEventListener("click", function () {
-            window.location.href = "create.html"
-        });
-
-        document.getElementById("accountLink").addEventListener("click", function () {
-            window.location.href = "account.html"
-        });
+        document.getElementById("feedLink").addEventListener("click", () => window.location.href = "index.html");
+        document.getElementById("createLink").addEventListener("click", () => window.location.href = "create.html");
+        document.getElementById("accountLink").addEventListener("click", () => window.location.href = "account.html");
     } else {
-        document.getElementById("sidenav").querySelectorAll("a").forEach(link => {
+        document.querySelectorAll("#sidenav a").forEach(link => {
             link.addEventListener("click", function (event) {
                 event.preventDefault();
                 alert("Você precisa fazer login para acessar esta página");
             });
         });
     }
-});
-
-
-// Sidenav no mobile
-function toggleSidenav() {
-    document.getElementById("sidenav").classList.toggle("show");
 }
 
-// Função para abrir e fechar o sidenav corretamente
+// Função para abrir e fechar o menu lateral
 function toggleSidenav() {
     const sidenav = document.getElementById("sidenav");
     const headerHeight = document.querySelector(".mobile-header").offsetHeight;
@@ -75,47 +92,39 @@ function toggleSidenav() {
     }
 }
 
-// Classe para armazenar os dados capturados
-    class Usuario {
-        constructor(nome, email, senha) {
-            this.nome = nome;
-            this.email = email;
-            this.senha = senha;
-        }
-    }
+// Configura eventos para modais
+function configurarModais() {
+    document.querySelectorAll(".modal").forEach(modal => {
+        modal.addEventListener("shown.bs.modal", () => document.body.classList.add("modal-open"));
+        modal.addEventListener("hidden.bs.modal", () => document.body.classList.remove("modal-open"));
+    });
+}
 
-// Evento submit do formulário
-document.getElementById("cadastroForm").addEventListener("submit", function(event) {
-    event.preventDefault();
 
-    //validação do formulário
-    if (!this.checkValidity()) {
-        return;
-    }
+// Evento Material Box do Materialize (SEGUNDA OPÇÃO SOBRE MODALS)
 
-    // Capturando os dados dos campos
-    const nome = document.getElementById("nome").value;
-    const email = document.getElementById("email").value;
-    const senha = document.getElementById("senha").value;
-    
-    // Instanciando um objeto da classe Usuario com os dados capturados
-    const usuario = new Usuario(nome, email, senha);
-    console.log("Dados capturados:", usuario);
-
-});
-
-//Evento largura mobile
-document.addEventListener("DOMContentLoaded", function () {
-    let modals = document.querySelectorAll(".modal");
-
-    modals.forEach(modal => {
-        modal.addEventListener("shown.bs.modal", function () {
-            document.body.classList.add("modal-open");
-        });
-
-        modal.addEventListener("hidden.bs.modal", function () {
-            document.body.classList.remove("modal-open");
-        });
+document.addEventListener('DOMContentLoaded', function () {
+    const elems = document.querySelectorAll('.materialboxed');
+    M.Materialbox.init(elems, {
+        inDuration: 300,
+        outDuration: 200
     });
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    // Inicializa o Material Box
+    const materialboxElements = document.querySelectorAll('.materialboxed');
+    M.Materialbox.init(materialboxElements);
+
+    // Adiciona evento para exibir descrição ao clicar
+    materialboxElements.forEach(img => {
+        img.addEventListener('click', function () {
+            const descriptionBox = this.closest('.image-container').querySelector('.image-description');
+            descriptionBox.innerHTML = `
+                <h3>${this.dataset.title}</h3>
+                <p>${this.dataset.description}</p>
+            `;
+            descriptionBox.classList.toggle('visible');
+        });
+    });
+});

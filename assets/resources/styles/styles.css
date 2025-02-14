@@ -1,5 +1,13 @@
 /* CSS Básico a ser alterado */
 
+  :root {
+    --bs-primary: #c9c9c9; /* Nova cor para o tema primário */
+    --bs-primary-rgb: 255, 87, 51; /* Cor primária no formato RGB */
+    --bs-secondary: #3d3d3d; /* Nova cor para o tema secundário */
+    --bs-link-color: #1e90ff; /* Cor para links */
+    --bs-footer-bg: #000; /* Cor de fundo do footer */
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -8,54 +16,64 @@
 
   html, body {
     height: 100%;
-  }
-
-  :root {
-    --bs-primary: #c9c9c9; /* Nova cor para o tema primário */
-    --bs-secondary: #3d3d3d; /* Nova cor para o tema secundário */
-  }
-
-  .custom-card {
-    background-color: var(--bs-secondary);
-    color: white; /* Texto claro para contraste */
-    padding: 1rem;
-    border-radius: 0.25rem;
+    
   }
   
   body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Gotu';
     font-size: 16px;
     line-height: 1.6;
     color: #333;
     background-color: #f9f9f9;
+
   }
 
+  /* Main */
   .main-content {
     flex: 1;
     min-height: calc(100vh - 60px);
     padding: 20px;
     max-width: 900px;
     margin: 0 auto;
-    flex: 1;
   }
 
   /* Header */
+
+  .header-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: 'Gotu';
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
   header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     background-color: #ffffff;
     color: #000;
-    text-align: center;
     padding: 20px 10px;
     border-bottom: 1px solid #ddd;
   }
   
   header h1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Gotu';
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 10px;
   }
   
   header p {
+    font-family: 'Gotu';
     font-size: 1rem;
+    font-weight: 300;
     color: #666;
   }
   
@@ -77,13 +95,19 @@
     text-align: center;
   }
 
-  /* Estilo do Formulário */
-  #cadastro {
-    max-width: 500px;
-    margin: 0 auto;
+  .main-content p {
+    font-size: 1.125rem;
+    color: #555;
+    text-align: center;
   }
 
-  /* Estilo do Sidenav */
+  .main-content h2 {
+    font-size: 1.5rem;
+    color: #555;
+    text-align: center;
+  }
+
+  /* Sidenav */
   .sidenav {
     width: 250px;
     height: 100vh;
@@ -93,33 +117,43 @@
     background-color: #343a40;
     color: white;
     padding-top: 20px;
+    transform: translate(-100%);
     transition: transform 0.3s ease-in-out;
-  }
-
-  /* Sidenav aparece somente em telas maiores */
-  @media (min-width: 769px) {
-    .sidenav {
-      transform: translateX(0);
-    }
-  }
-
-  /* Sidenav aparece invisível em uma tela mobile */
-  @media (max-width: 768px) {
-    .sidenav {
-      transform: translateX(-100%);
-      width: 200px;
-      top: 50px; /* para aparecer abaixo do header */
-    }
-  }
-
-  .sidenav.disabled {
-    pointer-events: none;
-    opacity: 0.5;
+    z-index: 1050;
   }
 
   .sidenav.show {
       transform: translateX(0);
   }
+  
+  .sidenav.disabled {
+      pointer-events: none;
+      opacity: 0.5;
+  }
+
+  .sidenav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+  }
+
+  .sidenav span {
+    font-family: 'Gotu';
+    font-weight: 600;
+  }
+
+  .sidenav-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    padding: 15px;
+    border-bottom: 1px solid #555;
+  }
+
   .sidenav .nav-link {
       color: white;
   }
@@ -166,7 +200,6 @@
     color: #fff;
     text-align: center;
     padding: 10px 0;
-    /* font-size: 0.875rem; */
     border-top: 1px solid #222;
   }
   
@@ -180,7 +213,16 @@
     text-decoration: underline;
   }
   
+  /* Botões */
+  .btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary)
+  }
   
+  .btn-primary:hover {
+    background-color: var(--bs-secondary);
+    border-color: var(--bs-secondary);
+  }
 
   /* Centralização de texto e espaçamento */
   .text-center {
@@ -192,51 +234,14 @@
     padding-bottom: 1rem;
   }
 
-  /* Personalização do botão */
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #0056b3;
-  }
-
-  .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #003d80;
-  }
-
-
-  /* Ajustes do modal */
-
-  .modal-img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
-  }
-
-  .modal-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-  }
-
-  .modal-body img {
-    max-width: 100%;
-    max-height: 80vh;
-    object-fit: contain;
-  }
-
-  /* Estilo do modal */
-
+  /* Modal */
   .modal-dialog {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
   }
-  
+    
   .modal-content {
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -247,81 +252,81 @@
     border-bottom: 1px solid #dee2e6;
   }
 
-  .modal-footer {
+  .modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
     text-align: center;
-    font-size: 1rem;
-    padding: 15px;
-    background-color: #f8f9fa;
-    /* border-top: 1px solid #dee2e6; */
+    overflow: auto;
   }
 
+
+  .modal-img .modal-body img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Responsividade */
+  @media (max-width: 1023px) {
+    .sidenav {
+      transform: translateX(-100%); /* Sidenav aparece invisível em uma tela mobile */
+      width: 200px;
+      top: 50px;
+    }
+  }  
+  
+  @media (min-width: 1024px) {
+    .sidenav {
+      transform: translateX(0); /* Sidenav aparece somente em telas desktop */
+    }
+  }
+ 
+
   /* Estilos para quando a tela for mobile */
-  @media (max-width: 767px) {
+  @media (max-width: 1023px) {
     .mobile-header {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+    }
+    
+    .main-content {
+      margin-top: 50px;
     }
 
-    .modal-body {
-      text-align: center;
-      overflow: auto;
-      max-height: 90vh;
+    .sidenav {
+      transform: translateX(-100%);
+      width: 200px;
+      top: 50px;
     }
-
-    .modal-body .row {
-      flex-direction: column;
+  }
+  
+  @media (min-width: 1024px) {
+    .image-container {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      text-align: left;
     }
-
-    .modal-text {
-      text-align: justify;
-      padding: 15px;
-    }
-}
-
-/* Responsividade */
-  @media (min-width: 768px) {
+  
     .modal-body .row {
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    
+  
     .modal-body .col-md-6 {
       flex: 1;
     }
-
-    /* header h1 {
-      font-size: 1.75rem;
-    }
+  }
   
-    main p {
-      font-size: 1rem;
-    }
-  
-    footer {
-      font-size: 0.75rem;
-    } */
+  /* Formulário */
+  #cadastro {
+    max-width: 500px;
+    margin: 0 auto;
   }
-
-  /* Ajustes no FEED de imagens */
-  #feed .container-fluid {
-    padding: 20px;
-  }
-
-  #feed .row {
-    justify-content: center;
-  }
-
-  #feed img {
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-  }
-
-  #feed img:hover {
-    transform: scale(1.05);
-  }
-
 
   /*Validação dos campos destacando os válidos e inválidos*/
   input:invalid {
@@ -341,7 +346,65 @@
     display: block;
   }
 
+  #info {
+    max-width: 600px; /* Define uma largura máxima para centralizar */
+    background: #fff; /* Fundo branco para destacar */
+    border-radius: 8px; /* Bordas arredondadas para suavizar */
+    padding: 20px; /* Adiciona espaçamento interno */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Efeito de sombra suave */
+    text-align: center; /* Centraliza os textos */
+  }
+
+  #usuarioDados {
+    font-family: 'Gotu';
+    font-size: 1.1rem;
+    padding: 15px;
+    border-radius: 5px;
+  }
+
+  @media (max-width: 768px) {
+    #info {
+        max-width: 90%; /* Usa 90% da largura da tela no mobile */
+        padding: 15px;
+    }
+  }
+
   
+    /* Material Box
+
+  .image-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 20px;
+      position: relative;
+  }
+
+  .materialboxed {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      cursor: pointer;
+  }
+
+  /* Estilo da descrição oculta 
+  .image-description {
+      display: none;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 10px;
+      width: 90%;
+      max-width: 600px;
+  }
+
+  /* Descrição visível ao clicar 
+  .image-description.visible {
+      display: block;
+  } 
+  */
 
 
     /* Personalizando as colunas para melhor visibilidade
