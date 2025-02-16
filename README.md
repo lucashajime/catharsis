@@ -6,10 +6,10 @@ Este projeto tem como objetivo implementar um site de autopublicação de imagen
 https://www.figma.com/design/U5y2UIqcUSCBxttUanxOTP/CATARSIS?node-id=1-2&p=f&t=gJGArHPFbgEW5Klr-0
 
 ## Design System: 
-Link para o PDF
+
 
 ## Site em Produção - GitHub Pages
-https://github.com/lucashajime/catharsis
+[https://github.com/lucashajime/catharsis](https://lucashajime.github.io/catharsis/)
 
 ## Framework CSS
 **MaterializeCSS**
