@@ -6,8 +6,8 @@ Este projeto tem como objetivo implementar um site de autopublicação de imagen
 https://www.figma.com/design/U5y2UIqcUSCBxttUanxOTP/CATARSIS?node-id=1-2&p=f&t=gJGArHPFbgEW5Klr-0
 
 ## Links para os vídeos-explicação - Youtube Unlisted:
-Vídeo-explicação do código-fonte e requisitos - https://youtu.be/hPfMdJzfoEE
-Vídeo-explicação da interface do site - https://youtu.be/Bvpxpx0ochk
+- Vídeo-explicação do código-fonte e requisitos - https://youtu.be/hPfMdJzfoEE
+- Vídeo-explicação da interface do site - https://youtu.be/Bvpxpx0ochk
 
 ## Site em Produção - GitHub Pages
 [https://github.com/lucashajime/catharsis](https://lucashajime.github.io/catharsis/)
